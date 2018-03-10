@@ -1,0 +1,14 @@
+version: '2'
+services:
+    jhipstersampleapplication2-app:
+        image: jhipstersampleapplication2
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mariadb://jhipstersampleapplication2-mariadb:3306/jhipstersampleapplication2
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    jhipstersampleapplication2-mariadb:
+        extends:
+            file: mariadb.yml
+            service: jhipstersampleapplication2-mariadb
